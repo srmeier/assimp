@@ -4,25 +4,19 @@
 
 #include <assimp/BaseImporter.h>
 
+namespace Assimp {
+
 class N3Importer : public BaseImporter {
 public:
-    N3Importer() : BaseImporter = default;
+    N3Importer();
+    ~N3Importer() override;
+    bool CanRead(const std::string &filename, IOSystem *pIOHandler, bool checkSig) const override;
 
-    N3Importer() override = default;
-
-    bool CanRead(const std::string &filename, IOSystem *pIOHandler, bool checkSig) const override {
-        if (checkSig) {
-            // Check the signature and return the result
-        } else {
-            const std::string extension = GetExtension(filename));
-            if ( extension == "n3") {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void InternReadFile() {
-        // Add your code here
-    }
+protected:
+    const aiImporterDesc *GetInfo() const override;
+    void InternReadFile(const std::string &filename, aiScene *pScene, IOSystem *pIOHandler) override;
 };
+
+} // namespace Assimp
+
+#endif
