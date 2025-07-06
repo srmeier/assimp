@@ -36,7 +36,7 @@ bool N3Importer::CanRead(const std::string &filename, IOSystem *pIOHandler, bool
         // Check the signature and return the result
     } else {
         const std::string extension = GetExtension(filename);
-        if (extension == "n3") {
+        if (extension == "n3chr") {
             return true;
         }
     }
